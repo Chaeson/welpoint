@@ -9,5 +9,4 @@ public class WelpointApplication {
     public static void main(String[] args) {
         SpringApplication.run(WelpointApplication.class, args);
     }
-
 }

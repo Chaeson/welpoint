@@ -1,20 +1,24 @@
 package kr.co.ubcn.welpoint.controller;
 
+import kr.co.ubcn.welpoint.model.User;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Slf4j
+@CrossOrigin("*")
 @RestController
-@CrossOrigin(origins = "*")
 public class LoginController {
 
-    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
-    public String loginUser(HttpServletRequest request, HttpServletResponse response,
-                            @RequestBody Object item){
-        log.info("userId::{}",item.toString());
-        return "Success";
+    @RequestMapping(value = "v1/login", method = {RequestMethod.GET, RequestMethod.POST})
+    public ResponseEntity<User> loginUser( HttpSession session){
+        log.info("111");
+        HttpStatus status = HttpStatus.OK;
+        return null;
     }
 }
