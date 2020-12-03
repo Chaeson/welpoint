@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Slf4j
-@CrossOrigin("*")
+@CrossOrigin
 @RestController
 public class LoginController {
 
     @RequestMapping(value = "v1/login", method = {RequestMethod.GET, RequestMethod.POST})
-    public ResponseEntity<User> loginUser( HttpSession session){
-        log.info("111");
+    public ResponseEntity<User> loginUser(@RequestBody User user, HttpSession session){
+        log.info("UserInfo:{}",user);
         HttpStatus status = HttpStatus.OK;
-        return null;
+        return new ResponseEntity<User>(user,status);
     }
 }
