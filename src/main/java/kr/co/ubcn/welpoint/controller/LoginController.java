@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,10 +16,10 @@ import javax.servlet.http.HttpSession;
 @RestController
 public class LoginController {
 
-    @RequestMapping(value = "v1/login", method = {RequestMethod.GET, RequestMethod.POST})
-    public ResponseEntity<User> loginUser(@RequestBody User user, HttpSession session){
-        log.info("UserInfo:{}",user);
+    @PostMapping(value = "v1/login")
+    public User loginUser(@RequestBody User user, HttpSession session){
+        log.info("UserInfo:{}, session:{}",user,session);
         HttpStatus status = HttpStatus.OK;
-        return new ResponseEntity<User>(user,status);
+        return user;
     }
 }
