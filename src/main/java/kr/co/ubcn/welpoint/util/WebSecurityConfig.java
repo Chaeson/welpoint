@@ -48,16 +48,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         //super.configure(http);
         http.authorizeRequests()
-                .antMatchers("/","/v1").permitAll()
-                //.anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/v1/login")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll()
-        .and().cors().configurationSource(corsConfigurationSource()).and().csrf().disable().authorizeRequests();
+                .antMatchers("/v1/**").permitAll()
+//                .anyRequest().authenticated()
+//        .and()
+//                .formLogin()
+//                .loginPage("/v1/login")
+//                .permitAll()
+//        .and()
+//                .logout()
+//                .permitAll()
+        .and().cors().and().csrf().disable()
+        .authorizeRequests();
 
     }
 
@@ -67,8 +68,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.addAllowedHeader("*");
         // AS-IS: corsConfiguration.addAllowedMethod("*");
-        corsConfiguration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE"));
+        corsConfiguration.setAllowedMethods(Arrays.asList("HEAD","GET", "POST", "PUT", "DELETE"));
         //corsConfiguration.addAllowedOrigin("*");
+        //corsConfiguration.addAllowedOrigin("http://localhost:8080");
         corsConfiguration.setAllowCredentials(true);
         corsConfiguration.setMaxAge(3600L);
         corsConfiguration.addAllowedOriginPattern("*");

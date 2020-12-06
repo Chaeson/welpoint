@@ -33,6 +33,8 @@ dependencies {
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+    //[ADD] 2020.12.06
+    implementation 'org.json:json:20201115'
 }
 
 test {
